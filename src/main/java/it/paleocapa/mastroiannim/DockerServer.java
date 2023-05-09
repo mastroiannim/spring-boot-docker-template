@@ -9,6 +9,8 @@ import org.springframework.context.event.EventListener;
 
 
 @SpringBootApplication(scanBasePackages={"it.paleocapa.mastroiannim"})
+//TODO JPA
+//@EnableJpaRepositories(basePackages = {"it.paleocapa.mastroiannim.repository"})
 public class DockerServer {
 
 	private static final Logger LOG = LoggerFactory.getLogger(DockerServer.class);

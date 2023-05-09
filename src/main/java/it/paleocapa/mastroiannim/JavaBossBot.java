@@ -5,8 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+
+import org.telegram.telegrambots.meta.api.objects.*;
 
 
 @Service
@@ -46,10 +47,16 @@ public class JavaBossBot extends TelegramLongPollingBot {
 		if (update.hasMessage() && update.getMessage().hasText()) {
 			
 			long chatId = update.getMessage().getChatId();
+
+			User sender = update.getMessage().getFrom();
 			
+			String username = sender.getUserName();
+			String msg = String.format("Benvenuto %s, come posso aiutarti? ", username);
+			LOG.info(msg);
+
 			SendMessage message = new SendMessage();
 			message.setChatId(chatId);
-			message.setText("Benvenuto! Come posso aiutarti?");
+			message.setText(msg);
 			
 			try {
 				execute(message);

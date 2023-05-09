@@ -10,4 +10,13 @@ public class RestApiController {
     public String home() {
         return "Hello from Docker!";
     }
+
+    //TODO JPA
+    /**@Autowired
+    private UserRepository userRepository;
+
+    @GetMapping("/api/users")
+    public String findAllUsers() {
+        return userRepository.findAll().toString();
+    }*/
 }

@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
-CREATE TABLE bot_user(objectId SERIAL PRIMARY KEY, username TEXT NOT NULL, firstname TEXT NOT NULL, lastname TEXT NOT NULL, value REAL);
+CREATE TABLE bot_user(objectId SERIAL PRIMARY KEY, username TEXT NOT NULL, firstname TEXT, lastname TEXT, value REAL);
 INSERT INTO bot_user(username, firstname, lastname, value)
 SELECT LEFT(md5(i::TEXT), 10), LEFT(md5(i::TEXT), 10), LEFT(md5(i::TEXT), 10), random() FROM generate_series(1, 10) s(i);
 SELECT * FROM bot_user;

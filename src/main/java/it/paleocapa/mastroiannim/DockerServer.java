@@ -6,11 +6,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
 @SpringBootApplication(scanBasePackages={"it.paleocapa.mastroiannim"})
 //TODO JPA
-//@EnableJpaRepositories(basePackages = {"it.paleocapa.mastroiannim.repository"})
+@EnableJpaRepositories(basePackages = {"it.paleocapa.mastroiannim.repository"})
 public class DockerServer {
 
 	private static final Logger LOG = LoggerFactory.getLogger(DockerServer.class);

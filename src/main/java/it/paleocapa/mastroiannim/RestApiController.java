@@ -14,7 +14,6 @@ public class RestApiController {
         return "Hello from Docker!";
     }
 
-    //TODO JPA
     @Autowired
     private UserRepository userRepository;
 

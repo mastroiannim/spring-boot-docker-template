@@ -18,7 +18,6 @@ public class JavaBossBot extends TelegramLongPollingBot {
 
 	private static final Logger LOG = LoggerFactory.getLogger(JavaBossBot.class);
 
-	//TODO JPA
 	@Autowired
 	private UserRepository userRepository;
 
@@ -40,6 +39,7 @@ public class JavaBossBot extends TelegramLongPollingBot {
 	}
 
 	@Override
+	@Deprecated
 	public String getBotToken() {
 		return botToken;
 	}
@@ -54,7 +54,6 @@ public class JavaBossBot extends TelegramLongPollingBot {
 		if (update.hasMessage() && update.getMessage().hasText()) {
 			
 			long chatId = update.getMessage().getChatId();
-
 			org.telegram.telegrambots.meta.api.objects.User sender = update.getMessage().getFrom();
 			
 			String username = sender.getUserName();
@@ -69,7 +68,7 @@ public class JavaBossBot extends TelegramLongPollingBot {
 			String msg = String.format("Benvenuto %s, come posso aiutarti? ", username);
 			LOG.info(msg);
 
-			if(userRepository.findByUserName(username).size()==0)
+			if(userRepository.findByUserName(username).isEmpty())
 				userRepository.save(newUser);
 
 			SendMessage message = new SendMessage();
